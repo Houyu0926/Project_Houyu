@@ -20,6 +20,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        showList();
+
+
+        }
+    private void showList(){
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
@@ -33,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
         // define an adapter
         mAdapter = new ListAdapter(input);
         recyclerView.setAdapter(mAdapter);
+
+
 
         NBATeams team1 = new NBATeams("OKC","Oklahoma City Thunder", "Billy Donovan", 1967, 1);
 
