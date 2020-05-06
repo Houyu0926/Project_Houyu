@@ -14,7 +14,7 @@ public class NBATeams {
         this.yearcreation = yearcreation;
         this.numchampions = numchampions;
     }
-
+    //as
     public String getName() {
         return name;
     }
