@@ -56,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<RestDogResponse> call, Response<RestDogResponse> response) {
                 if(response.isSuccessful() && response.body() != null){
                     List<Dog> dogList = response.body().getMessages();
+                    Toast.makeText(getApplicationContext(),"API success", Toast.LENGTH_SHORT).show();
                     showList(dogList);
                 }else{
                     error();
