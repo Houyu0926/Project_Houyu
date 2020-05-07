@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        showList();
+//        showList();
         MakeAPICall();
 
         }
 
 
-    private static final String BASE_URL = "https://dog.ceo/";
+    private static final String BASE_URL = "https://raw.githubusercontent.com/Houyu0926/Project_Houyu/master/";
 
     private void MakeAPICall(){
         Gson gson = new GsonBuilder()
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<RestDogResponse> call, Response<RestDogResponse> response) {
                 if(response.isSuccessful() && response.body() != null){
                     List<Dog> dogList = response.body().getMessages();
-                    Toast.makeText(getApplicationContext(),"API success", Toast.LENGTH_LONG).show();
+                    showList(dogList);
                 }else{
                     error();
                 }
@@ -74,19 +74,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void showList(){
+    private void showList(List<Dog> dogList){
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        List<String> input = new ArrayList<>();
-        for (int i = 1; i <= 30; i++) {
-            input.add("Team " + i);
-        }
-        // define an adapter
-        mAdapter = new ListAdapter(input);
+
+        mAdapter = new ListAdapter(dogList);
         recyclerView.setAdapter(mAdapter);
 
     }

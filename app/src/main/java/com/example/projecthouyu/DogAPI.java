@@ -5,6 +5,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface DogAPI {
-    @GET("/api/breeds/list")
+    @GET("myAPI.json")
     Call<RestDogResponse> getBreedResponse();
 }
