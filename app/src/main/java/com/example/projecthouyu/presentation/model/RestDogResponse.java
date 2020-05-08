@@ -1,4 +1,6 @@
-package com.example.projecthouyu;
+package com.example.projecthouyu.presentation.model;
+
+import com.example.projecthouyu.presentation.model.Dog;
 
 import java.util.List;
 

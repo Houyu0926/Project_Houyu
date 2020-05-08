@@ -1,6 +1,5 @@
-package com.example.projecthouyu;
+package com.example.projecthouyu.presentation.model;
 
-import java.util.List;
 
 public class Dog {
     private String breed;

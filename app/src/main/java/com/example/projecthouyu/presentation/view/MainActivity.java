@@ -1,4 +1,4 @@
-package com.example.projecthouyu;
+package com.example.projecthouyu.presentation.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,12 +9,16 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.projecthouyu.Constants;
+import com.example.projecthouyu.data.DogAPI;
+import com.example.projecthouyu.R;
+import com.example.projecthouyu.presentation.model.Dog;
+import com.example.projecthouyu.presentation.model.RestDogResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
