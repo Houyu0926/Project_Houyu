@@ -4,16 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.projecthouyu.Constants;
 import com.example.projecthouyu.R;
 import com.example.projecthouyu.Singletons;
 import com.example.projecthouyu.presentation.controller.MainController;
 import com.example.projecthouyu.presentation.model.Dog;
-import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
@@ -55,8 +52,17 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
 
-        mAdapter = new ListAdapter(dogList);
+        mAdapter = new ListAdapter(dogList, new ListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Dog item) {
+                controller.onItemClick(item);
+            }
+        });
         recyclerView.setAdapter(mAdapter);
 
+    }
+
+    public void navigateToDetails(Dog dog) {
+        Toast.makeText(getApplicationContext(),"Navigate", Toast.LENGTH_SHORT).show();
     }
 }

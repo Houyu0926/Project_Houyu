@@ -89,7 +89,7 @@ public class MainController {
     }
 
     public void onItemClick(Dog dog){
-
+        view.navigateToDetails(dog);
     }
 
     public void onButtonAClick(){
