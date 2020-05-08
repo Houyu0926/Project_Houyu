@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.projecthouyu.Constants;
 import com.example.projecthouyu.R;
+import com.example.projecthouyu.Singletons;
 import com.example.projecthouyu.presentation.controller.MainController;
 import com.example.projecthouyu.presentation.model.Dog;
 import com.google.gson.GsonBuilder;
@@ -30,10 +31,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         controller = new MainController(
-                getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE),
-                new GsonBuilder()
-                .setLenient()
-                .create(),
+                Singletons.getSharedPreferencesInstance(getApplicationContext()),
+                Singletons.getGsonInstance(),
                 this
         );
 

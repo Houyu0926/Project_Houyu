@@ -1,16 +1,14 @@
 package com.example.projecthouyu.presentation.controller;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import com.example.projecthouyu.Constants;
-import com.example.projecthouyu.data.DogAPI;
+import com.example.projecthouyu.Singletons;
 import com.example.projecthouyu.presentation.model.Dog;
 import com.example.projecthouyu.presentation.model.RestDogResponse;
 import com.example.projecthouyu.presentation.view.MainActivity;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
@@ -19,8 +17,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainController {
 
@@ -49,14 +45,7 @@ public class MainController {
 
     private void MakeAPICall(){
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build();
-
-        DogAPI dogapi = retrofit.create(DogAPI.class);
-
-        Call<RestDogResponse> call = dogapi.getBreedResponse();
+        Call<RestDogResponse> call = Singletons.getDogApiInstance().getBreedResponse();
         call.enqueue(new Callback<RestDogResponse>() {
             @Override
             public void onResponse(Call<RestDogResponse> call, Response<RestDogResponse> response) {
