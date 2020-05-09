@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projecthouyu.R;
+import com.example.projecthouyu.Singletons;
 import com.example.projecthouyu.presentation.controller.DetailController;
+import com.example.projecthouyu.presentation.controller.MainController;
 import com.example.projecthouyu.presentation.model.Dog;
 
 import java.util.List;
@@ -16,11 +18,7 @@ import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private ListAdapter listAdapter;
-    private MainActivity mainActivity;
-    private String detailInformation;
     private TextView textView;
-    private Dog dog;
     private DetailController detailController;
 
 
@@ -28,6 +26,11 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+            detailController = new DetailController(
+                    Singletons.getSharedPreferencesInstance(getApplicationContext()),
+                    Singletons.getGsonInstance(),
+                    this
+            );
         detailController.onStart();
         }
 

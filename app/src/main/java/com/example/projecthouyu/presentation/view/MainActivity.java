@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 //        myIntent.putExtra("key", value); //Optional parameters
         MainActivity.this.startActivity(myIntent);
 
-        Toast.makeText(getApplicationContext(),dog.getBreed(), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getApplicationContext(),dog.getBreed(), Toast.LENGTH_SHORT).show();
     }
 
 
