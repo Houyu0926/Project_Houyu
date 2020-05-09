@@ -7,6 +7,7 @@ import com.example.projecthouyu.Constants;
 import com.example.projecthouyu.Singletons;
 import com.example.projecthouyu.presentation.model.Dog;
 import com.example.projecthouyu.presentation.model.RestDogResponse;
+import com.example.projecthouyu.presentation.view.DetailActivity;
 import com.example.projecthouyu.presentation.view.MainActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -18,14 +19,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainController {
+public class DetailController {
 
     private SharedPreferences sharedPreferences;
     private Gson gson;
-    private MainActivity view;
+    private DetailActivity view;
 
 
-    public MainController(SharedPreferences sharedPreferences, Gson gson, MainActivity view) {
+    public DetailController(SharedPreferences sharedPreferences, Gson gson, DetailActivity view) {
         this.sharedPreferences = sharedPreferences;
         this.gson = gson;
         this.view = view;
@@ -33,10 +34,10 @@ public class MainController {
 
     public void onStart(){
 
-        List<Dog> dogList = getDataFromCache();
+        String status = getStatusFromCache();
 
-        if(dogList != null){
-            view.showList(dogList);
+        if(status != null){
+            view.showStatus(status);
         }else {
             MakeAPICall();
         }
@@ -49,47 +50,48 @@ public class MainController {
             @Override
             public void onResponse(Call<RestDogResponse> call, Response<RestDogResponse> response) {
                 if(response.isSuccessful() && response.body() != null){
-                    List<Dog> dogList = response.body().getMessages();
+                    String status = response.body().getStatus();
                     Toast.makeText(view.getApplicationContext(),"API success", Toast.LENGTH_SHORT).show();
-                    saveList(dogList);
-                    view.showList(dogList);
+                    saveStatus(status);
+                    view.showStatus(status);
                 }else{
-                    view.error();
+                    view.NoDetailInformation();
                 }
             }
 
+
             @Override
             public void onFailure(Call<RestDogResponse> call, Throwable t) {
-                view.error();
+                view.NoDetailInformation();
             }
         });
     }
 
-    private void saveList(List<Dog> dogList) {
-        String jsonString = gson.toJson(dogList);
+    private void saveStatus(String status) {
+        String jsonString = gson.toJson(status);
 
         sharedPreferences
                 .edit()
-                .putString(Constants.KEY_DOG_LIST, jsonString)
+                .putString(Constants.KEY_STATUS, jsonString)
                 .apply();
-        Toast.makeText(view.getApplicationContext(),"Dog List Saved", Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(view.getApplicationContext(),"Status Saved", Toast.LENGTH_SHORT).show();
     }
 
-    private List<Dog> getDataFromCache() {
-        String jsonDog = sharedPreferences.getString(Constants.KEY_DOG_LIST, null);
 
-        if(jsonDog == null){
+    private String getStatusFromCache() {
+        String jsonStatus = sharedPreferences.getString(Constants.KEY_STATUS, null);
+
+        if(jsonStatus == null){
             return null;
         }else{
-            Type listType = new TypeToken<List<Dog>>(){}.getType();
-            return gson.fromJson(jsonDog, listType);
+            Type statusType = new TypeToken<String>(){}.getType();
+            return gson.fromJson(jsonStatus, statusType);
         }
     }
 
-    public void onItemClick(Dog dog){
-        view.navigateToDetails(dog);
-    }
+//    public void onItemClick(Dog dog){
+//        view.navigateToDetails(dog);
+//    }
 
     public void onButtonAClick(){
 

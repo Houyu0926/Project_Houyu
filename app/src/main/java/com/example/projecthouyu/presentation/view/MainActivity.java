@@ -21,24 +21,20 @@ public class MainActivity extends AppCompatActivity {
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private MainController controller;
+    private MainController mainController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        controller = new MainController(
+        mainController = new MainController(
                 Singletons.getSharedPreferencesInstance(getApplicationContext()),
                 Singletons.getGsonInstance(),
                 this
         );
-
-        controller.onStart();
-
+        mainController.onStart();
         }
-
-
 
     public void error() {
         Toast.makeText(getApplicationContext(),"API error", Toast.LENGTH_SHORT).show();
@@ -52,15 +48,13 @@ public class MainActivity extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-
         mAdapter = new ListAdapter(dogList, new ListAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Dog item) {
-                controller.onItemClick(item);
+                mainController.onItemClick(item);
             }
         });
         recyclerView.setAdapter(mAdapter);
-
     }
 
     public void navigateToDetails(Dog dog) {
@@ -68,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
 //        myIntent.putExtra("key", value); //Optional parameters
         MainActivity.this.startActivity(myIntent);
 
-        Toast.makeText(getApplicationContext(),"Navigate", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),dog.getBreed(), Toast.LENGTH_SHORT).show();
     }
+
+
 }

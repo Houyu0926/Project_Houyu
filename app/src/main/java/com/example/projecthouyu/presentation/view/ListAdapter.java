@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projecthouyu.R;
@@ -40,7 +41,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         notifyItemInserted(position);
     }
 
-    public void remove(int position) {
+    private void remove(int position) {
         values.remove(position);
         notifyItemRemoved(position);
     }
@@ -54,6 +55,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         this.listener = listener;
     }
 
+    @NonNull
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(
             ViewGroup parent,
@@ -91,7 +93,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
+
         return values.size();
     }
 
+    public List<Dog> getValues() {
+        return values;
+    }
 }

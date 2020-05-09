@@ -40,8 +40,6 @@ public class Singletons {
     public static SharedPreferences getSharedPreferencesInstance(Context context) {
         if(sharedPreferencesInstance == null){
             sharedPreferencesInstance = context.getSharedPreferences(Constants.SHARED_PREFERENCES_NAME, Context.MODE_PRIVATE);
-
-
         }
         return sharedPreferencesInstance;
     }
