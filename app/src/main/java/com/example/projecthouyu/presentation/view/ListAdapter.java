@@ -51,7 +51,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         this.listener = listener;
     }
 
-    public void setListener(OnItemClickListener listener){
+    public void setListener(OnItemClickListener listener) {
         this.listener = listener;
     }
 
@@ -84,7 +84,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         holder.txtFooter.setText(curdog.getOrigin());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
+            @Override
+            public void onClick(View v) {
                 listener.onItemClick(curdog);
             }
         });

@@ -91,11 +91,4 @@ public class MainController {
         view.navigateToDetails(dog);
     }
 
-    public void onButtonAClick(){
-
-    }
-
-    public void onButtonBClick(){
-
-    }
 }

@@ -5,15 +5,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projecthouyu.R;
 import com.example.projecthouyu.Singletons;
 import com.example.projecthouyu.presentation.controller.DetailController;
-import com.example.projecthouyu.presentation.controller.MainController;
-import com.example.projecthouyu.presentation.model.Dog;
-
-import java.util.List;
 
 
 public class DetailActivity extends AppCompatActivity {
@@ -22,17 +17,17 @@ public class DetailActivity extends AppCompatActivity {
     private DetailController detailController;
 
 
-        @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-            detailController = new DetailController(
-                    Singletons.getSharedPreferencesInstance(getApplicationContext()),
-                    Singletons.getGsonInstance(),
-                    this
-            );
+        detailController = new DetailController(
+                Singletons.getSharedPreferencesInstance(getApplicationContext()),
+                Singletons.getGsonInstance(),
+                this
+        );
         detailController.onStart();
-        }
+    }
 
 
     public void NoDetailInformation() {

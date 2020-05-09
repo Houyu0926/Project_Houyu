@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 this
         );
         mainController.onStart();
-        }
+    }
 
     public void error() {
         Toast.makeText(getApplicationContext(),"API error", Toast.LENGTH_SHORT).show();

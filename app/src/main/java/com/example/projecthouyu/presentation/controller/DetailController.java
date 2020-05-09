@@ -33,7 +33,6 @@ public class DetailController {
     }
 
     public void onStart(){
-
         String status = getStatusFromCache();
 
         if(status != null){

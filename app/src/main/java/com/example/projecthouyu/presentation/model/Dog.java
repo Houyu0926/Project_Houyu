@@ -12,4 +12,5 @@ public class Dog {
     public String getOrigin() {
         return origin;
     }
+
 }
