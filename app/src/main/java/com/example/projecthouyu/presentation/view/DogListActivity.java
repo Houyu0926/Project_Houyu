@@ -1,7 +1,5 @@
 package com.example.projecthouyu.presentation.view;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -12,31 +10,30 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projecthouyu.R;
 import com.example.projecthouyu.Singletons;
-import com.example.projecthouyu.presentation.controller.MainController;
+import com.example.projecthouyu.presentation.controller.DogListController;
 import com.example.projecthouyu.presentation.model.Dog;
 
 import java.util.List;
 
-@SuppressLint("Registered")
 public class DogListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ListAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
 
-    private MainController mainController;
+    private DogListController dogListController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doglist);
 
-        mainController = new MainController(
+        dogListController = new DogListController(
                 Singletons.getSharedPreferencesInstance(getApplicationContext()),
                 Singletons.getGoonInstance(),
                 this
         );
-        mainController.onStart();
+        dogListController.onStart();
     }
 
     public void error() {
@@ -54,7 +51,7 @@ public class DogListActivity extends AppCompatActivity {
          mAdapter = new ListAdapter(dogList, getApplicationContext(), new ListAdapter.OnItemClickListener(){
             @Override
             public void onItemClick(Dog item) {
-                mainController.onItemClick(item);
+                dogListController.onItemClick(item);
             }
         });
         recyclerView.setAdapter(mAdapter);
@@ -62,10 +59,8 @@ public class DogListActivity extends AppCompatActivity {
 
     public void navigateToDetails(Dog dog) {
         Intent myIntent = new Intent(DogListActivity.this, DetailActivity.class);
-//        myIntent.putExtra("key", value); //Optional parameters
         DogListActivity.this.startActivity(myIntent);
 
-        Toast.makeText(getApplicationContext(),dog.getBreed(), Toast.LENGTH_SHORT).show();
     }
 
 

@@ -3,8 +3,6 @@ package com.example.projecthouyu.presentation.controller;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
 import com.example.projecthouyu.Constants;
 import com.example.projecthouyu.Singletons;
 import com.example.projecthouyu.presentation.model.Dog;
@@ -20,14 +18,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainController {
+public class DogListController {
 
     private SharedPreferences sharedPreferences;
     private Gson gson;
     private DogListActivity view;
 
 
-    public MainController(SharedPreferences sharedPreferences, Gson gson, DogListActivity view) {
+    public DogListController(SharedPreferences sharedPreferences, Gson gson, DogListActivity view) {
         this.sharedPreferences = sharedPreferences;
         this.gson = gson;
         this.view = view;
@@ -49,17 +47,17 @@ public class MainController {
         Call<RestDogResponse> call = Singletons.getDogApiInstance().getBreedResponse();
         call.enqueue(new Callback<RestDogResponse>() {
             @Override
-            public void onResponse(@NonNull Call<RestDogResponse> call, @NonNull Response<RestDogResponse> response) {
+            public void onResponse(Call<RestDogResponse> call, Response<RestDogResponse> response) {
                 if(response.isSuccessful() && (response.body() != null)){
                     List<Dog> dogList = response.body().getInformation();
-                    Toast.makeText(view.getApplicationContext(),"API success", Toast.LENGTH_LONG).show();
+                    Toast.makeText(view.getApplicationContext(),"API success", Toast.LENGTH_SHORT).show();
                     saveList(dogList);
                     view.showList(dogList);
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<RestDogResponse> call, @NonNull Throwable t) {
+            public void onFailure(Call<RestDogResponse> call, Throwable t) {
                 view.error();
             }
         });

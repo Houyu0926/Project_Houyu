@@ -1,6 +1,5 @@
 package com.example.projecthouyu.presentation.view;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setStartButton();
+    }
+
+    public void setStartButton(){
         startButton = findViewById(R.id.button_start);
 
 

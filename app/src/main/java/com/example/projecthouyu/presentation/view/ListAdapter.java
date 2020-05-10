@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -67,7 +66,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         this.listener = listener;
     }
 
-    @NonNull
     @Override
     public ListAdapter.ViewHolder onCreateViewHolder(
             ViewGroup parent,
@@ -79,11 +77,9 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Dog curdog = values.get(position);
-
 
         holder.txtHeader.setText(curdog.getBreed());
         holder.txtHeader.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +90,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         });
 
         holder.txtFooter.setText(curdog.getOrigin());
-        Glide.with(context).load(curdog.getImageurl()).fitCenter().into(imageView);
+
+        Glide.with(context).load(curdog.getImageurl()).optionalFitCenter().into(imageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
