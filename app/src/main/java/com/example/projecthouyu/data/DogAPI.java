@@ -6,6 +6,6 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface DogAPI {
-    @GET("myAPI.json")
+    @GET("dog.json")
     Call<RestDogResponse> getBreedResponse();
 }

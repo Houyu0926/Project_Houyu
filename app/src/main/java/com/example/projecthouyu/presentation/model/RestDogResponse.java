@@ -1,6 +1,5 @@
 package com.example.projecthouyu.presentation.model;
 
-import com.example.projecthouyu.presentation.model.Dog;
 
 import java.util.List;
 
@@ -8,7 +7,7 @@ public class RestDogResponse {
     private List<Dog> messages;
     private String status;
 
-    public List<Dog> getMessages() {
+    public List<Dog> getInformation() {
         return messages;
     }
 

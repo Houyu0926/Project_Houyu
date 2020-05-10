@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Project Houyu</string>
+    <string name="text2">Please press the start button below ~</string>
+    <string name="text1">Welcome to dog APP!</string>
+    <string name="startbutton">Start</string>
 
 </resources>

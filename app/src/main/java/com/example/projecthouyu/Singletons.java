@@ -12,24 +12,24 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Singletons {
 
-    private static Gson gsonInstance;
+    private static Gson goonInstance;
     private static DogAPI dogApiInstance;
     private static SharedPreferences sharedPreferencesInstance;
 
-    public static Gson getGsonInstance(){
-        if(gsonInstance == null){
-            gsonInstance = new GsonBuilder()
+    public static Gson getGoonInstance(){
+        if(goonInstance == null){
+            goonInstance = new GsonBuilder()
                     .setLenient()
                     .create();
         }
-        return gsonInstance;
+        return goonInstance;
     }
 
     public static DogAPI getDogApiInstance(){
         if(dogApiInstance == null){
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(Constants.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create(getGsonInstance()))
+                    .addConverterFactory(GsonConverterFactory.create(getGoonInstance()))
                     .build();
 
             dogApiInstance = retrofit.create(DogAPI.class);

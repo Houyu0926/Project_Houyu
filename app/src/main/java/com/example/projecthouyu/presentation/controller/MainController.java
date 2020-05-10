@@ -3,11 +3,13 @@ package com.example.projecthouyu.presentation.controller;
 import android.content.SharedPreferences;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.projecthouyu.Constants;
 import com.example.projecthouyu.Singletons;
 import com.example.projecthouyu.presentation.model.Dog;
 import com.example.projecthouyu.presentation.model.RestDogResponse;
-import com.example.projecthouyu.presentation.view.MainActivity;
+import com.example.projecthouyu.presentation.view.DogListActivity;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -22,10 +24,10 @@ public class MainController {
 
     private SharedPreferences sharedPreferences;
     private Gson gson;
-    private MainActivity view;
+    private DogListActivity view;
 
 
-    public MainController(SharedPreferences sharedPreferences, Gson gson, MainActivity view) {
+    public MainController(SharedPreferences sharedPreferences, Gson gson, DogListActivity view) {
         this.sharedPreferences = sharedPreferences;
         this.gson = gson;
         this.view = view;
@@ -47,19 +49,17 @@ public class MainController {
         Call<RestDogResponse> call = Singletons.getDogApiInstance().getBreedResponse();
         call.enqueue(new Callback<RestDogResponse>() {
             @Override
-            public void onResponse(Call<RestDogResponse> call, Response<RestDogResponse> response) {
-                if(response.isSuccessful() && response.body() != null){
-                    List<Dog> dogList = response.body().getMessages();
-                    Toast.makeText(view.getApplicationContext(),"API success", Toast.LENGTH_SHORT).show();
+            public void onResponse(@NonNull Call<RestDogResponse> call, @NonNull Response<RestDogResponse> response) {
+                if(response.isSuccessful() && (response.body() != null)){
+                    List<Dog> dogList = response.body().getInformation();
+                    Toast.makeText(view.getApplicationContext(),"API success", Toast.LENGTH_LONG).show();
                     saveList(dogList);
                     view.showList(dogList);
-                }else{
-                    view.error();
                 }
             }
 
             @Override
-            public void onFailure(Call<RestDogResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<RestDogResponse> call, @NonNull Throwable t) {
                 view.error();
             }
         });

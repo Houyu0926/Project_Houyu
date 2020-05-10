@@ -1,13 +1,16 @@
 package com.example.projecthouyu.presentation.view;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.projecthouyu.R;
 import com.example.projecthouyu.presentation.model.Dog;
 
@@ -16,16 +19,21 @@ import java.util.List;
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<Dog> values;
     private OnItemClickListener listener;
+    private Context context;
+    private ImageView imageView;
 
 
     public interface OnItemClickListener {
         void onItemClick(Dog item);
     }
 
+
+
     class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
         TextView txtHeader;
         TextView txtFooter;
+
         View layout;
 
         ViewHolder(View v) {
@@ -33,6 +41,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             layout = v;
             txtHeader = (TextView) v.findViewById(R.id.firstLine);
             txtFooter = (TextView) v.findViewById(R.id.secondLine);
+            imageView = (ImageView) v.findViewById(R.id.icon_dog);
         }
     }
 
@@ -46,10 +55,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         notifyItemRemoved(position);
     }
 
-    public ListAdapter(List<Dog> myDataset, OnItemClickListener listener) {
+    public ListAdapter(List<Dog> myDataset, Context context1, OnItemClickListener listener ) {
         this.values = myDataset;
         this.listener = listener;
+        this.context = context1;
+
     }
+
 
     public void setListener(OnItemClickListener listener) {
         this.listener = listener;
@@ -61,10 +73,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             ViewGroup parent,
             int viewType
     ) {
-        // create a new view
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.row_layout, parent, false);
-        // set the view's size, margins, paddings and layout parameters
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
@@ -73,6 +83,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Dog curdog = values.get(position);
+
+
         holder.txtHeader.setText(curdog.getBreed());
         holder.txtHeader.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +94,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         });
 
         holder.txtFooter.setText(curdog.getOrigin());
+        Glide.with(context).load(curdog.getImageurl()).fitCenter().into(imageView);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,16 +102,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 listener.onItemClick(curdog);
             }
         });
+
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-
         return values.size();
-    }
-
-    public List<Dog> getValues() {
-        return values;
     }
 }

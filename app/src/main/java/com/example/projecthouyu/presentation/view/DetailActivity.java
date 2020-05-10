@@ -13,17 +13,14 @@ import com.example.projecthouyu.presentation.controller.DetailController;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private TextView textView;
-    private DetailController detailController;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        detailController = new DetailController(
+        DetailController detailController = new DetailController(
                 Singletons.getSharedPreferencesInstance(getApplicationContext()),
-                Singletons.getGsonInstance(),
+                Singletons.getGoonInstance(),
                 this
         );
         detailController.onStart();
@@ -36,7 +33,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
     public void showStatus(String status) {
-        textView = (TextView)findViewById(R.id.detail_text);
+        TextView textView = (TextView) findViewById(R.id.detail_text);
         textView.setText(status);
     }
 
