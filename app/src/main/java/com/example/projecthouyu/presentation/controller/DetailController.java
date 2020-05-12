@@ -85,15 +85,4 @@ public class DetailController {
         }
     }
 
-//    public void onItemClick(Dog dog){
-//        view.navigateToDetails(dog);
-//    }
-
-    public void onButtonAClick(){
-
-    }
-
-    public void onButtonBClick(){
-
-    }
 }

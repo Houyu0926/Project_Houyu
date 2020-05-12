@@ -29,7 +29,6 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         TextView txtHeader;
         TextView txtFooter;
 

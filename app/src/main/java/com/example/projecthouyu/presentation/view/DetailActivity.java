@@ -18,46 +18,22 @@ public class DetailActivity extends AppCompatActivity {
 
     private Button returnButton;
     private Button menuButton;
+    private TextView textView;
+
+    private DetailController detailController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        DetailController detailController = new DetailController(
+        detailController = new DetailController(
                 Singletons.getSharedPreferencesInstance(getApplicationContext()),
                 Singletons.getGoonInstance(),
                 this
         );
         detailController.onStart();
-        setreturnButton();
-        setMenuButton();
     }
 
-    public void setreturnButton(){
-        returnButton = findViewById(R.id.button_return);
-
-        returnButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), DogListActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
-
-    public void setMenuButton(){
-        menuButton = findViewById(R.id.button_menu);
-
-        menuButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent (getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
-    }
 
 
     public void NoDetailInformation() {
@@ -66,7 +42,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
     public void showStatus(String status) {
-        TextView textView = (TextView) findViewById(R.id.detail_text);
+        textView = (TextView) findViewById(R.id.detail_text);
         textView.setText(status);
     }
 
