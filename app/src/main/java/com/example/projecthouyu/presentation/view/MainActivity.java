@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Press again to exit the APP ~", Toast.LENGTH_SHORT).show();
                 mExitTime = System.currentTimeMillis();
             } else {
-                android.os.Process.killProcess(android.os.Process.myPid());
+                finish();
             }
             return true;
         }
