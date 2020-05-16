@@ -31,5 +31,5 @@ Premier écran :
 
 - Le munu de APP
 
-<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/premier_ecran_1.png" width="20%" height="20%">
+<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/premier_ecran_1.png" width="25%" height="25%">
 
