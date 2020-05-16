@@ -24,12 +24,12 @@ Architecture : Singleton, MVC, Principes Solid.
 
 Logo :
 
-<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/logo.png" width="20%" height="20%">
+<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/logo.png" width="10%" height="10%">
 
 
 Premier écran :
 
 - Le munu de APP
 
-<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/premier_ecran_1.png" width="30%" height="30%">
+<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/premier_ecran_1.png" width="20%" height="20%">
 
