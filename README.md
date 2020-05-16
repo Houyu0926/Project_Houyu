@@ -8,11 +8,16 @@ Cette application utilise l'API de Github, il permet d'aller chercher le fichier
 # Consignes Respectées
 
 Appel WebService à une API Rest.
+
 Affichage d'une liste d’éléments.
+
 Affichage d'un détail information d'une liste.
+
 Stockage de données en cache.
-Design du menu et du logo
-Architecture : Singleton, MVC, Principes Solid
+
+Design du menu et du logo.
+
+Architecture : Singleton, MVC, Principes Solid.
 
 
 # Fonctionnalités
