@@ -22,6 +22,13 @@ Architecture : Singleton, MVC, Principes Solid.
 
 # Fonctionnalités
 
-Premier écran :
+Logo :
 
 ![image](https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/logo.png)
+
+Premier écran :
+
+- Le munu de APP
+
+![image](https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/premier_ecran_1.png)
+
