@@ -7,15 +7,15 @@ Cette application utilise l'API de Github, il permet d'aller chercher le fichier
 
 # Consignes Respectées
 
-Appel WebService à une API Rest.
-
 Affichage d'une liste d’éléments.
 
-Affichage d'un détail information d'une liste.
+Affichage d'un détail information(le statut) d'une liste.
+
+Appel WebService à une API Rest.
 
 Stockage de données en cache.
 
-Design du menu et du logo.
+Design : menu, fond, logo.
 
 Architecture : Singleton, MVC, Principes Solid.
 
@@ -27,6 +27,7 @@ Architecture : Singleton, MVC, Principes Solid.
 <img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/logo.png" width="10%" height="10%">
 
 
+
 ## Premier écran :
 
 - Le munu de APP
@@ -36,3 +37,19 @@ Architecture : Singleton, MVC, Principes Solid.
 - Lorsque j'appuie la touche de sortie, l'écran s'affichera un message : Press again to exit the APP ~. Si j'appuie encore la touche de sortie en 2 seconds, l'application sera immédiatement quittée.
 
 <img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/premier_ecran_2.png" width="25%" height="25%">
+
+
+
+## Deuxième écran :
+
+- Affichage d'une liste de chien
+
+<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/deuxieme_ecran_list.png" width="25%" height="25%">
+
+
+
+## Troisième écran :
+
+- Affichage le statut de la liste de chien
+
+<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/troisieme_ecran_status.png" width="25%" height="25%">
