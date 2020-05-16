@@ -33,3 +33,6 @@ Premier écran :
 
 <img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/premier_ecran_1.png" width="25%" height="25%">
 
+- Lorsque j'appuie la touche de sortie, l'écran s'affichera un message : Press again to exit the APP ~. Si j'appuie encore la touche de sortie en 2 seconds, l'application sera immédiatement quittée.
+
+<img src="https://github.com/Houyu0926/Project_Houyu/blob/master/images_app/premier_ecran_2.png" width="25%" height="25%">
